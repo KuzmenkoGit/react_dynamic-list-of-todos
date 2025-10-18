@@ -1,3 +1,5 @@
+import React from 'react';
+
 type Props = {
   onFilter: (event: React.ChangeEvent<HTMLSelectElement>) => void;
   filter: string;

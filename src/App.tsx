@@ -27,7 +27,7 @@ export const App: React.FC = () => {
 
   const [selectedTodoId, setSelectedTodoId] = useState<number | null>(null);
 
-  function openModal(userId: number, todoId: number) {
+  function handleOpenModal(userId: number, todoId: number) {
     setIsShowModal(true);
     setCheckedTodo(todos.find(todo => todo.id === todoId));
     setCurrentUser(null); // 👈 Очисти перед загрузкой!
@@ -113,7 +113,7 @@ export const App: React.FC = () => {
               )}
               <TodoList
                 todos={queryFilter}
-                openModal={openModal}
+                onOpen={handleOpenModal}
                 selectedTodoId={selectedTodoId}
               />
             </div>

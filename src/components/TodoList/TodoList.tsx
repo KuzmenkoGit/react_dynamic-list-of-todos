@@ -4,13 +4,13 @@ import { TodoItem } from '../TodoItem/TodoItem';
 
 type Props = {
   todos: Todo[];
-  openModal: (userId: number, todoId: number) => void;
+  onOpen: (userId: number, todoId: number) => void;
   selectedTodoId: number | null;
 };
 
 export const TodoList: React.FC<Props> = ({
   todos,
-  openModal,
+  onOpen,
   selectedTodoId,
 }) => (
   <table className="table is-narrow is-fullwidth">
@@ -32,7 +32,7 @@ export const TodoList: React.FC<Props> = ({
         <TodoItem
           key={todo.id}
           todo={todo}
-          onOpen={openModal}
+          onOpen={onOpen}
           isSelected={selectedTodoId === todo.id}
         />
       ))}
