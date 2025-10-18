@@ -3,7 +3,7 @@ type Props = {
   filter: string;
   query: string;
   onInputQuery: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  clearInput: () => void;
+  onClear: () => void;
 };
 
 export const TodoFilter: React.FC<Props> = ({
@@ -11,15 +11,15 @@ export const TodoFilter: React.FC<Props> = ({
   filter,
   query,
   onInputQuery,
-  clearInput,
+  onClear,
 }) => (
   <form className="field has-addons">
     <p className="control">
       <span className="select">
         <select data-cy="statusSelect" onChange={onFilter} value={filter}>
           <option value="all">All</option>
-          <option value="active">Active</option>
           <option value="completed">Completed</option>
+          <option value="active">Active</option>
         </select>
       </span>
     </p>
@@ -44,7 +44,7 @@ export const TodoFilter: React.FC<Props> = ({
             data-cy="clearSearchButton"
             type="button"
             className="delete"
-            onClick={clearInput}
+            onClick={onClear}
           />
         )}
       </span>

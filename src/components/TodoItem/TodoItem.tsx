@@ -1,13 +1,14 @@
 import { Todo } from '../../types/Todo';
 import classNames from 'classnames';
+import React from 'react';
 
 type Props = {
   todo: Todo;
-  openModal: (userId: number, todoId: number) => void;
+  onOpen: (userId: number, todoId: number) => void;
   isSelected: boolean;
 };
 
-export const TodoItem: React.FC<Props> = ({ todo, openModal, isSelected }) => {
+export const TodoItem: React.FC<Props> = ({ todo, onOpen, isSelected }) => {
   return (
     <tr data-cy="todo" className="">
       <td className="is-vcentered">{todo.id}</td>
@@ -37,7 +38,7 @@ export const TodoItem: React.FC<Props> = ({ todo, openModal, isSelected }) => {
           data-cy="selectButton"
           className="button"
           type="button"
-          onClick={() => openModal(todo.userId, todo.id)}
+          onClick={() => onOpen(todo.userId, todo.id)}
         >
           <span className="icon">
             <i

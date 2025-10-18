@@ -32,7 +32,7 @@ export const TodoList: React.FC<Props> = ({
         <TodoItem
           key={todo.id}
           todo={todo}
-          openModal={openModal}
+          onOpen={openModal}
           isSelected={selectedTodoId === todo.id}
         />
       ))}

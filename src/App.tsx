@@ -30,6 +30,7 @@ export const App: React.FC = () => {
   function openModal(userId: number, todoId: number) {
     setIsShowModal(true);
     setCheckedTodo(todos.find(todo => todo.id === todoId));
+    setCurrentUser(null); // 👈 Очисти перед загрузкой!
     setSelectedTodoId(todoId);
 
     getUser(userId)
@@ -54,13 +55,13 @@ export const App: React.FC = () => {
         if (error instanceof Error) {
           setErrorMessage(error.message);
         } else {
-          setErrorMessage('Unkown error');
+          setErrorMessage('Unknown error');
         }
       })
       .finally(() => setLoader(false));
   }, []);
 
-  function handlerTodoFilter(event: React.ChangeEvent<HTMLSelectElement>) {
+  function handleTodoFilter(event: React.ChangeEvent<HTMLSelectElement>) {
     setFilter(event.target.value);
   }
 
@@ -97,11 +98,11 @@ export const App: React.FC = () => {
 
             <div className="block">
               <TodoFilter
-                onFilter={handlerTodoFilter}
+                onFilter={handleTodoFilter}
                 filter={filter}
                 query={query}
                 onInputQuery={handleInputQuery}
-                clearInput={handleClearInput}
+                onClear={handleClearInput}
               />
             </div>
 
